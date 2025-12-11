@@ -499,7 +499,7 @@ const paragraphObserver = new IntersectionObserver((entries) => {
         }
     });
 }, { threshold: 0.8 }); // consider “read” if 80% visible
-
+paragraphs.forEach(p => paragraphObserver.observe(p));
 
 
 
