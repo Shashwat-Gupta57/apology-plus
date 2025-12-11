@@ -481,10 +481,6 @@ const paragraphTimes = {};
 const paragraphEntryTime = {};
 
 const paragraphs = document.querySelectorAll('.section p, .hero p, .proposal p');
-paragraphs.forEach(p => {
-    paragraphTimes[p.dataset.id = p.dataset.id || Math.random().toString(36).substr(2, 9)] = 0;
-});
-
 const paragraphObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         const id = entry.target.dataset.id;
@@ -497,7 +493,11 @@ const paragraphObserver = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.8 }); // consider “read” if 80% visible
 
-paragraphs.forEach(p => paragraphObserver.observe(p));
+paragraphs.forEach(p => {
+    const key = p.innerText.slice(0, 20).replace(/\s+/g, '_'); 
+    p.dataset.id = key;
+    paragraphTimes[key] = 0;
+});
 
 
         noBtn.addEventListener('click', () => {
