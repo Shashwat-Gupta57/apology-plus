@@ -111,6 +111,11 @@
             color: #fff;
             margin-bottom: 30px;
         }
+.section.center-img img {
+    display: block;
+    margin: 0 auto 20px auto;
+}
+
         .buttons {
             display: flex;
             justify-content: center;
@@ -281,7 +286,7 @@
 
 
 
-<section class="section">
+<section class="section" class="section center-img">
     <h2>That Day in the Park I'll Never Forget 🌳</h2>
     <p>Remember that park day, Apoorva? You were teasing me with your laughs, and I was falling head over heels for your dusky allure. You called me your 'aurat' that day – little did you know, I was already yours! 😏</p>
     <img src="res/photo-2.png" alt="Park Meetup">
@@ -289,7 +294,7 @@
 </section>
 
 
-        <section class="section">
+        <section class="section" class="section center-img">
     <h2>Shashwat’s Birthday: Where the Magic Sparked 🎉</h2>
     <p>At Shashwat’s bash, you were the flirty queen, my mard! Your jokes had me blushing, and I couldn't resist your charm. This group pic? It's our start to something epic. (I was secretly planning to steal your heart then!) 😉</p>
     <img src="res/photo-11.jpg" alt="Group Photo">
@@ -471,6 +476,29 @@ const observer = new IntersectionObserver((entries) => {
 
 sections.forEach(section => observer.observe(section));
 
+// Track time spent on each paragraph inside sections
+const paragraphTimes = {};
+const paragraphEntryTime = {};
+
+const paragraphs = document.querySelectorAll('.section p, .hero p, .proposal p');
+paragraphs.forEach(p => {
+    paragraphTimes[p.dataset.id = p.dataset.id || Math.random().toString(36).substr(2, 9)] = 0;
+});
+
+const paragraphObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        const id = entry.target.dataset.id;
+        if (entry.isIntersecting) {
+            paragraphEntryTime[id] = performance.now();
+        } else if (paragraphEntryTime[id]) {
+            paragraphTimes[id] += (performance.now() - paragraphEntryTime[id]) / 1000;
+            paragraphEntryTime[id] = null;
+        }
+    });
+}, { threshold: 0.8 }); // consider “read” if 80% visible
+
+paragraphs.forEach(p => paragraphObserver.observe(p));
+
 
         noBtn.addEventListener('click', () => {
 	    
@@ -531,19 +559,21 @@ const database = firebase.database();
  const yesRef = database.ref('proposal_responses');
 
     yesRef.push({
-        name: 'Apoorva',
-        response: 'yes',
-        timestamp_raw_utc: new Date().toISOString(),
-        timestamp_ist: new Date().toLocaleString("en-IN", {timeZone: "Asia/Kolkata", hour12:false}),
-        browser_user_agent: navigator.userAgent,
-        platform: navigator.platform,
-        language: navigator.language,
-        noClicks: noClicks,
-        passFailCount: passFailCount,
-        totalTime: getTotalTime(),
-        sectionTimes: sectionTimes,
-        sectionViews: sectionViews
-    });
+    name: 'Apoorva',
+    response: 'yes',
+    timestamp_raw_utc: new Date().toISOString(),
+    timestamp_ist: new Date().toLocaleString("en-IN", {timeZone: "Asia/Kolkata", hour12:false}),
+    browser_user_agent: navigator.userAgent,
+    platform: navigator.platform,
+    language: navigator.language,
+    noClicks: noClicks,
+    passFailCount: passFailCount,
+    totalTime: getTotalTime(),
+    sectionTimes: sectionTimes,
+    sectionViews: sectionViews,
+    paragraphTimes: paragraphTimes
+});
+
 
         // Transition to final page
         setTimeout(() => {
