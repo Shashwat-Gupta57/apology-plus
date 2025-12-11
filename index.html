@@ -356,7 +356,9 @@
 </section>
 
 
-    <div class="final-page" id="final-page">
+    
+    </div>
+<div class="final-page" id="final-page">
         <h1>Yay! You've Made Me the Flirtiest Guy Alive! 🎉</h1>
         <p>Thank you for saying yes, my mard Apoorva. Your humor, your charm, your smile, your dusky beauty – everything about you makes my heart race and life feel like a romantic comedy. I love flirting with you, and now I get to do it forever! 💕</p>
         <img src="res/photo-3.png" alt="Apoorva">
@@ -364,7 +366,6 @@
         <img src="res/photo-5.png" alt="Apoorva">
         <p>You're my everything, my gharwali. Let's create flirty memories, sweet kisses, and endless laughter. Forever yours, Sarvagy. 😍❤️</p>
         <div class="flirty-note">P.S. Your 'no' was just a tease – I knew you'd say yes! 😉</div>
-    </div>
 
     <div class="hearts" id="hearts"></div>
     <div class="popup" id="popup">Arre, no flirting with rejection! 😜</div>
@@ -376,7 +377,7 @@
     <script>
 document.addEventListener('contextmenu', e => e.preventDefault());
 document.addEventListener('keydown', (e) => {
-    if (e.key === "F12" ||
+    if (e.key === "F11" ||
         (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J" || e.key === "C")) ||
         (e.ctrlKey && e.key === "U")
     ) {
@@ -515,12 +516,11 @@ yesRef.push({
     language: language
 });
 
-
         // Transition to final page
         setTimeout(() => {
-            document.querySelector('.container').style.display = 'none';
-            finalPage.style.display = 'block';
-        }, 1000);
-    });
-
+    finalPage.style.display = 'block';
+    document.querySelector('.container').style.display = 'none';
+    document.body.style.overflow = 'auto'; // enable scrolling on mobile
+}, 1000); // 1 second delay
+});
 </script>
