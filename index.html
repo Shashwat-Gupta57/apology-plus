@@ -1275,11 +1275,17 @@
 
             let passFailCount = 0;
 
-            const pageLoadTime = performance.now();
+            let pageStartTime = null;
 
-            function getTotalTime() {
-                return (performance.now() - pageLoadTime) / 1000; // seconds
-            }
+function markStartTime() {
+    pageStartTime = performance.now();
+}
+
+function getTotalTime() {
+    if (pageStartTime == null) return 0;
+    return (performance.now() - pageStartTime) / 1000; // seconds
+}
+
 
 
             // launchBtn.addEventListener('click', () => {
@@ -1303,6 +1309,7 @@
                     passFailCount++;
                     return;
                 }
+                markStartTime();
                 // Show Intro Screen Stage 1
                 document.getElementById("intro-overlay").style.display = "flex";
                 document.getElementById("intro-stage-1").style.display = "block";
@@ -1587,12 +1594,16 @@
                 entries.forEach(entry => {
                     const key = entry.target.id || entry.target.innerText.slice(0, 20);
                     if (entry.isIntersecting) {
-                        sectionEntryTime[key] = performance.now();
-                        sectionViews[key] += 1;
-                    } else if (sectionEntryTime[key]) {
-                        sectionTimes[key] += (performance.now() - sectionEntryTime[key]) / 1000;
-                        sectionEntryTime[key] = null;
-                    }
+    sectionEntryTime[key] = performance.now();
+    sectionViews[key] += 1;
+} else if (sectionEntryTime[key] != null) {
+    const delta = (performance.now() - sectionEntryTime[key]) / 1000;
+    if (Number.isFinite(delta) && delta >= 0) {
+        sectionTimes[key] += delta;
+    }
+    sectionEntryTime[key] = null;
+}
+
                 });
             }, { threshold: 0.5 });
 
@@ -1616,11 +1627,15 @@
                 entries.forEach(entry => {
                     const id = entry.target.dataset.id;
                     if (entry.isIntersecting) {
-                        paragraphEntryTime[id] = performance.now();
-                    } else if (paragraphEntryTime[id]) {
-                        paragraphTimes[id] += (performance.now() - paragraphEntryTime[id]) / 1000;
-                        paragraphEntryTime[id] = null;
-                    }
+    paragraphEntryTime[id] = performance.now();
+} else if (paragraphEntryTime[id] != null) {
+    const delta = (performance.now() - paragraphEntryTime[id]) / 1000;
+    if (Number.isFinite(delta) && delta >= 0) {
+        paragraphTimes[id] += delta;
+    }
+    paragraphEntryTime[id] = null;
+}
+
                 });
             }, { threshold: 0.8 }); // consider “read” if 80% visible
             paragraphs.forEach(p => paragraphObserver.observe(p));
