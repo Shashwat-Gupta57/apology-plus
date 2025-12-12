@@ -583,6 +583,88 @@
             text-align: center;
             animation: fadeIntro 0.4s ease;
         }
+        .magazine-block {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.magazine-block.reverse {
+    flex-direction: row-reverse;
+}
+
+.magazine-image {
+    flex: 0 0 260px;
+}
+
+.magazine-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    object-fit: cover;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+}
+
+.magazine-text {
+    flex: 1;
+    text-align: left;
+}
+
+.magazine-text h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.4em;
+    color: #ff6b9d;
+}
+
+.magazine-text p {
+    margin: 0 0 6px 0;
+    line-height: 1.5;
+}
+
+/* Mobile: stack image above text */
+@media (max-width: 768px) {
+    .magazine-block,
+    .magazine-block.reverse {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .magazine-image {
+        width: 100%;
+    }
+
+    .magazine-text {
+        text-align: left;
+        width: 100%;
+    }
+}
+
+/* Disable text selection everywhere */
+* {
+    -webkit-user-select: none;  /* Safari / iOS */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* IE/Edge legacy */
+    user-select: none;
+}
+
+/* Remove blue focus outline on buttons/links (visual only) */
+button:focus,
+a:focus {
+    outline: none;
+}
+
+/* If you ever need an actually editable field, override like this: */
+/*
+.editable,
+.editable * {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+*/
+
     </style>
 </head>
 <div id="wish-modal-overlay">
@@ -746,109 +828,289 @@
 
 
         <section class="section">
-            <h2>What I Love Most About You 💖</h2>
-            <div class="compliments">
-                <div class="compliment">
-                    <p>Your dusky skin is like a sunset I never want to end – mesmerizing and warm. 🌅</p>
-                </div>
-                <div class="compliment">
-                    <p>Your humor? It's the spark that lights up my world, making every moment hilarious and
-                        heartwarming. 😂❤️</p>
-                </div>
-                <div class="compliment">
-                    <p>At 5'5", you're the perfect height for me to whisper sweet nothings into your ear. 😉</p>
-                </div>
-                <div class="compliment">
-                    <p>Your smile could melt the coldest heart – and mine's already yours. 😍</p>
-                </div>
-                <div class="compliment">
-                    <p>Being with you feels like a flirty adventure every day. Let's make it forever! 🌟</p>
-                </div>
-                <div class="compliment">
-                    <p>Your charm is irresistible – I'm hooked, line and sinker. 🪝💕</p>
-                </div>
-            </div>
+  <h2>What I Love Most About You 💖</h2>
+
+  <div class="magazine-block">
+    <div class="magazine-image">
+      <img src="res/photo-3.png" alt="Apoorva laughing">
+    </div>
+    <div class="magazine-text">
+      <h3>Your laugh and your light</h3>
+      <p>
+        Your laugh is ridiculously contagious. The moment you start giggling,
+        the whole world around you feels softer and lighter — including me.
+      </p>
+      <p>
+        You don’t just enter a room, you brighten it. You make ordinary moments
+        feel like scenes from a feel‑good movie I never want to end.
+      </p>
+      <p class="flirty-note">
+        You’re the plot twist my boring days were waiting for. 😉
+      </p>
+    </div>
+  </div>
+
+  <div class="magazine-block reverse">
+    <div class="magazine-image">
+      <img src="res/photo-4.png" alt="Apoorva smiling">
+    </div>
+    <div class="magazine-text">
+      <h3>Your dusky glow</h3>
+      <p>
+        Your dusky skin is my favourite shade of sunset — warm, gentle,
+        and somehow impossible to look away from.
+      </p>
+      <p>
+        Standing next to you, I always feel like the lucky one who got the
+        most beautiful view in the whole world.
+      </p>
+      <p class="flirty-note">
+        If glow was a competition, you’d be permanently banned for being too good. 🌅
+      </p>
+    </div>
+  </div>
+
+  <div class="magazine-block">
+    <div class="magazine-image">
+      <img src="res/photo-5.png" alt="Apoorva posing">
+    </div>
+    <div class="magazine-text">
+      <h3>Your charm and your chaos</h3>
+      <p>
+        You flirt, you tease, you joke — and somehow manage to make it all feel
+        so safe and soft at the same time.
+      </p>
+      <p>
+        You’re equal parts comfort and chaos, and my heart has fallen for both
+        sides of you without a single complaint.
+      </p>
+      <p class="flirty-note">
+        I didn’t “catch feelings”, you just walked in and stole them all. 🪝
+      </p>
+    </div>
+  </div>
+</section>
+
         </section>
 
 
 
 
 
-
-
-        <section class="section center-img">
-            <h2>That Day in the Park I'll Never Forget 🌳</h2>
-            <p>Remember that park day, Apoorva? You were teasing me with your laughs, and I was falling head over heels
-                for your dusky allure. You called me your 'aurat' that day – little did you know, I was already yours!
-                😏</p>
-            <img src="res/photo-2.png" alt="Park Meetup">
-            <div class="flirty-note">P.S. Your eyes sparkled more than the stars that night. 🌟</div>
-        </section>
-
-
-        <section class="section center-img">
-            <h2>Shashwat’s Birthday: Where the Magic Sparked 🎉</h2>
-            <p>At Shashwat’s bash, you were the flirty queen, my mard! Your jokes had me blushing, and I couldn't resist
-                your charm. This group pic? It's our start to something epic. (I was secretly planning to steal your
-                heart then!) 😉</p>
-            <img src="res/photo-11.jpg" alt="Group Photo">
-            <div class="flirty-note">Your laughter is my favorite sound – let's make more music together. 🎶</div>
-        </section>
 
 
         <section class="section">
-            <h2>Little Moments That Made Me Fall for You 😘</h2>
-            <div class="photos">
-                <img src="res/photo-3.png" alt="Apoorva">
-                <img src="res/photo-4.png" alt="Apoorva">
-            </div>
-            <p>These pics capture your playful side, Apoorva – the way you light up any room with your dusky charm. I'm
-                addicted to your vibe! 💃</p>
-            <div class="flirty-note">If flirting was an art, you'd be Picasso – creative, bold, and utterly captivating.
-                🎨</div>
-        </section>
+  <div class="magazine-block">
+    <div class="magazine-image">
+      <img src="res/photo-2.png" alt="Park meetup">
+    </div>
+    <div class="magazine-text">
+      <h3>That Park Day 🌳</h3>
+      <p>
+        That day in the park felt like a glitch in the universe — everything
+        else blurred out and it was just your laugh, your eyes, and that teasing
+        “aurat” you threw at me.
+      </p>
+      <p>
+        I pretended to act normal, but honestly, my heart had already walked
+        over to you, sat down, and decided, “Yep, this is home now.”
+      </p>
+      <p class="flirty-note">
+        You called me your aurat as a joke. My heart took it as a contract. 😏
+      </p>
+    </div>
+  </div>
+
+  <div class="magazine-block reverse">
+    <div class="magazine-image">
+      <img src="res/photo-11.jpg" alt="Shashwat birthday group photo">
+    </div>
+    <div class="magazine-text">
+      <h3>Shashwat’s Birthday Spark 🎉</h3>
+      <p>
+        In that chaotic birthday mess — people shouting, music blasting,
+        random jokes flying around — you were still the loudest thing in my mind.
+      </p>
+      <p>
+        Somewhere between your one‑liners and your smile, I realised I wasn’t
+        just enjoying the party… I was quietly falling for the girl who was
+        running it.
+      </p>
+      <p class="flirty-note">
+        The party ended. My crush on you didn’t. 🎶
+      </p>
+    </div>
+  </div>
+</section>
+
+
 
 
         <section class="section">
-            <h2>More Memories I Keep Close to My Heart 💑</h2>
-            <div class="photos">
-                <img src="res/photo-5.png" alt="Apoorva">
-                <img src="res/photo-6.png" alt="Apoorva">
-            </div>
-            <p>Look at you, my mard – owning every moment with that 5'5" confidence. My fair skin might be jealous of
-                your glow! 😜</p>
-            <div class="flirty-note">Your presence is like a magnet – I can't stay away, and I don't want to. 🧲❤️</div>
-        </section>
+  <div class="magazine-block">
+    <div class="magazine-image">
+      <img src="res/photo-6.png" alt="Apoorva playful">
+    </div>
+    <div class="magazine-text">
+      <h3>Little moments, big feelings 😘</h3>
+      <p>
+        These small, random photos of you are actually my favourites, because
+        they’re so… you. Unfiltered, dramatic, adorable, and 100% real.
+      </p>
+      <p>
+        It’s in these tiny moments — mid‑laugh, mid‑pose, mid‑chaos — that
+        I realise how naturally my heart has started choosing you.
+      </p>
+      <p class="flirty-note">
+        You’re not “photogenic”, you’re just dangerously cute in real life. 💃
+      </p>
+    </div>
+  </div>
+
+  <div class="magazine-block reverse">
+    <div class="magazine-image">
+      <img src="res/photo-7.png" alt="Apoorva smiling">
+    </div>
+    <div class="magazine-text">
+      <h3>More memories I replay 💑</h3>
+      <p>
+        Every time I scroll through these pictures, it feels like flipping
+        through my favourite chapter of life — the one where you quietly
+        became the main character.
+      </p>
+      <p>
+        You’re in my gallery, in my chats, in my playlists… and slowly,
+        very shamelessly, in every future plan my brain comes up with.
+      </p>
+      <p class="flirty-note">
+        My phone storage is full, but I still want more pictures of you. 🧲
+      </p>
+    </div>
+  </div>
+</section>
+
 
 
         <section class="section">
-            <h2>Your Smile in Every Moment 🌟</h2>
-            <div class="photos">
-                <img src="res/photo-7.png" alt="Apoorva">
-                <img src="res/photo-8.png" alt="Apoorva">
-            </div>
-            <p>These smiles of yours? They're my daily dose of happiness. Let's turn them into forever memories! 📸</p>
-            <div class="flirty-note">Flirting with you is my favorite pastime – and now I want it full-time. 😉</div>
-        </section>
+  <div class="magazine-block">
+    <div class="magazine-image">
+      <img src="res/photo-8.png" alt="Apoorva smiling big">
+    </div>
+    <div class="magazine-text">
+      <h3>Your smile, my favourite view 🌟</h3>
+      <p>
+        Your smile is the one notification I never get tired of. It makes
+        bad days lighter, normal days special, and good days feel legendary.
+      </p>
+      <p>
+        Sometimes I catch myself thinking about your smile out of nowhere —
+        that’s how I know this isn’t just a crush, it’s something softer,
+        deeper, and very real.
+      </p>
+      <p class="flirty-note">
+        If happiness had a face, it would look suspiciously like you. 📸
+      </p>
+    </div>
+  </div>
+
+  <div class="magazine-block reverse">
+    <div class="magazine-image">
+      <img src="res/photo-9.png" alt="Apoorva goofy">
+    </div>
+    <div class="magazine-text">
+      <h3>The side of you I adore 💕</h3>
+      <p>
+        Your goofy, dramatic, over‑the‑top side is honestly one of the best
+        things about you. You make being around you feel easy and fun.
+      </p>
+      <p>
+        I don’t just like your “perfect” moments — I love the unfiltered ones
+        where we’re just two idiots laughing at absolutely nothing.
+      </p>
+      <p class="flirty-note">
+        I don’t want a “perfect” love story. I want this silly, loud,
+        ours‑only one with you. 🎥
+      </p>
+    </div>
+  </div>
+</section>
 
 
         <section class="section">
-            <h2>The Side of You I Can’t Stop Adoring 💕</h2>
-            <div class="photos">
-                <img src="res/photo-9.png" alt="Apoorva">
-                <img src="res/photo-10.png" alt="Apoorva">
-            </div>
-            <p>Your humor shines through in every pic, Apoorva. I'm the luckiest guy to have you as my gharwali! 😂</p>
-            <div class="flirty-note">With you, every day feels like a romantic movie – and I'm the leading man. 🎥</div>
-        </section>
+  <div class="magazine-block">
+    <div class="magazine-image">
+      <img src="res/photo-10.png" alt="You and Apoorva vibe">
+    </div>
+    <div class="magazine-text">
+      <h3>Us — the perfectly imperfect duo 😘</h3>
+      <p>
+        You’re the fiery, dusky queen at 5'5", and I’m the slightly taller,
+        slightly stupider 5'7" guy who still can’t believe he gets to flirt
+        with you this much.
+      </p>
+      <p>
+        We’re not some calm, aesthetic couple — we’re chaos, inside jokes,
+        teasing, flirting, and soft moments hidden in between. And that’s
+        exactly why I want this to be official.
+      </p>
+      <p class="flirty-note">
+        Out of all the versions of my future, the one with you in it
+        is the only one that feels right. 💑
+      </p>
+    </div>
+  </div>
+</section>
 
-        <section class="section">
-            <h2>Us — In Our Own Silly, Perfect Way 😘</h2>
-            <p>Apoorva, you're the spice in my life, and I'm the fair-skinned goofball who adores every bit of you. From
-                your 5'5" sass to my 5'7" charm, we're a perfect match! Let's add some romance to the mix. 💑</p>
-            <div class="flirty-note">If you were a fruit, you'd be a fine-apple – sweet, juicy, and utterly
-                irresistible. 🍎</div>
-        </section>
+<section class="section">
+  <div class="magazine-block">
+    <div class="magazine-image">
+      <img src="res/photo-7.png" alt="Apoorva playful">
+    </div>
+    <div class="magazine-text">
+      <h3>Mini Game: Catch My Heart 🎮</h3>
+      <p>
+        Before you answer the big question, let’s play something tiny and silly.
+        You have 10 seconds to tap the little heart running around this box.
+      </p>
+      <p>
+        No pressure though… because whether you win or lose, you’ve already
+        won something much bigger.
+      </p>
+      <div id="game-wrapper" style="margin-top: 20px;">
+        <div id="game-area" style="
+            position: relative;
+            margin: 0 auto;
+            width: 260px;
+            height: 200px;
+            border-radius: 20px;
+            background: linear-gradient(135deg,#ffe6f0,#ffd1e8);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            overflow: hidden;
+        ">
+          <button id="game-heart" style="
+              position: absolute;
+              width: 60px;
+              height: 60px;
+              border-radius: 50%;
+              border: none;
+              background: #ff4f92;
+              color: #fff;
+              font-size: 1.6em;
+              cursor: pointer;
+              box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+          ">
+            ❤️
+          </button>
+        </div>
+        <p id="game-timer" style="margin-top: 8px; font-size: 0.95em; color:#c44569;">
+          Tap the heart to start the game — Time: 10s
+        </p>
+        <p id="game-result" style="margin-top: 4px; font-size: 1em;"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
         <section class="proposal">
             <h2>So… Will You Make This Official With Me? 💍</h2>
@@ -914,7 +1176,7 @@
             const bgMusic = document.getElementById('bg-music');
             const landingPage = document.getElementById('landing-page');
             const launchBtn = document.getElementById('launch-btn');
-            const PASSCODE = "projectnemo@sjam2";  // change this to whatever you want
+            const PASSCODE = "projectnemo@sjam3";  // change this to whatever you want
 
             let passFailCount = 0;
 
@@ -1302,4 +1564,83 @@
             }
 
             rotateCarousel();
+
+            // --- Cute mini-game: Catch My Heart ---
+const gameArea   = document.getElementById("game-area");
+const gameHeart  = document.getElementById("game-heart");
+const gameTimer  = document.getElementById("game-timer");
+const gameResult = document.getElementById("game-result");
+
+let clicks = 0;
+let timeLeft = 10;
+let gameInterval = null;
+let moveInterval = null;
+let gameStarted = false;
+
+function moveHeartRandom() {
+    const areaRect  = gameArea.getBoundingClientRect();
+    const heartRect = gameHeart.getBoundingClientRect();
+
+    const maxX = areaRect.width  - heartRect.width;
+    const maxY = areaRect.height - heartRect.height;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    gameHeart.style.left = x + "px";
+    gameHeart.style.top  = y + "px";
+}
+
+function startGameOnce() {
+    if (gameStarted) return;
+    gameStarted = true;
+
+    clicks = 0;
+    timeLeft = 10;
+    gameResult.textContent = "";
+    gameTimer.textContent = "Time left: 10s";
+
+    moveHeartRandom();
+
+    gameInterval = setInterval(() => {
+        timeLeft--;
+        gameTimer.textContent = "Time left: " + timeLeft + "s";
+        if (timeLeft <= 0) {
+            endGame();
+        }
+    }, 1000);
+
+    moveInterval = setInterval(moveHeartRandom, 700);
+}
+
+function endGame() {
+    clearInterval(gameInterval);
+    clearInterval(moveInterval);
+
+    gameHeart.disabled = true;
+
+    if (clicks > 0) {
+        gameResult.textContent =
+            "Congratulations, gamer girl — you didn’t just catch the heart in the box, " +
+            "you also officially won mine. 💘";
+    } else {
+        gameResult.textContent =
+            "You missed the heart in the game, but you still won the real one — " +
+            "mine — just by being you. 💖";
+    }
+}
+
+// Start game on first heart tap
+gameHeart.addEventListener("click", () => {
+    if (!gameStarted) {
+        startGameOnce();
+    }
+    if (!gameHeart.disabled) {
+        clicks++;
+        // tiny visual tap
+        gameHeart.style.transform = "scale(0.9)";
+        setTimeout(() => gameHeart.style.transform = "scale(1)", 120);
+    }
+});
+
         </script>
