@@ -1484,6 +1484,20 @@ function getTotalTime() {
             let game1Clicks = 0;
             let game1FinalPercent = 0; // 0..100
 
+            // --- New Mini-game: Fill My Heart Meter ---
+            const lgArea = document.getElementById("love-game-area");
+            const lgHeart = document.getElementById("love-game-heart");
+            const lgTimer = document.getElementById("love-game-timer");
+            const lgResult = document.getElementById("love-game-result");
+            const lgMeter = document.getElementById("love-game-meter");
+
+            let lgClicks = 0;
+            let lgTimeLeft = 8;
+            let lgTimerInterval = null;
+            let lgMoveInterval = null;
+            let lgStarted = false;
+            const lgMaxClicksForFull = 15; // ~15 taps ≈ full meter
+
             // in your existing game 1 code:
             if (lgHeart) {
                 lgHeart.addEventListener("click", () => {
@@ -1524,6 +1538,8 @@ function getTotalTime() {
             let game2Played = false;
             let game2LastScore = null; // 'perfect' | 'close' | 'miss'
             let game2LastAt = null;
+
+            
 
             function timingStop() {
                 tRunning = false;
@@ -1842,96 +1858,7 @@ function getTotalTime() {
 
             rotateCarousel();
 
-            // --- New Mini-game: Fill My Heart Meter ---
-            const lgArea = document.getElementById("love-game-area");
-            const lgHeart = document.getElementById("love-game-heart");
-            const lgTimer = document.getElementById("love-game-timer");
-            const lgResult = document.getElementById("love-game-result");
-            const lgMeter = document.getElementById("love-game-meter");
-
-            let lgClicks = 0;
-            let lgTimeLeft = 8;
-            let lgTimerInterval = null;
-            let lgMoveInterval = null;
-            let lgStarted = false;
-            const lgMaxClicksForFull = 15; // ~15 taps ≈ full meter
-
-            function lgMoveHeartRandom() {
-                const areaRect = lgArea.getBoundingClientRect();
-                const heartRect = lgHeart.getBoundingClientRect();
-
-                const maxX = areaRect.width - heartRect.width;
-                const maxY = areaRect.height - heartRect.height;
-
-                const x = Math.random() * maxX;
-                const y = Math.random() * maxY;
-
-                lgHeart.style.left = x + "px";
-                lgHeart.style.top = y + "px";
-            }
-
-            function lgStartGameOnce() {
-                if (lgStarted) return;
-                lgStarted = true;
-
-                lgClicks = 0;
-                lgTimeLeft = 8;
-                lgResult.textContent = "";
-                lgMeter.style.width = "0%";
-                lgTimer.textContent = "Time left: 8s";
-
-                lgMoveHeartRandom();
-
-                lgTimerInterval = setInterval(() => {
-                    lgTimeLeft--;
-                    lgTimer.textContent = "Time left: " + lgTimeLeft + "s";
-                    if (lgTimeLeft <= 0) {
-                        lgEndGame();
-                    }
-                }, 1000);
-
-                lgMoveInterval = setInterval(lgMoveHeartRandom, 600);
-            }
-
-            function lgEndGame() {
-                clearInterval(lgTimerInterval);
-                clearInterval(lgMoveInterval);
-
-                lgHeart.disabled = true;
-
-                if (lgClicks >= lgMaxClicksForFull) {
-                    lgResult.textContent =
-                        "Congratulations, pro gamer — you maxed out the meter and also officially won my heart. 💘";
-                } else if (lgClicks > 0) {
-                    lgResult.textContent =
-                        "You didn’t fill the whole bar, but every tap still pushed my heart closer to yours. You win me anyway. 💖";
-                } else {
-                    lgResult.textContent =
-                        "You didn’t tap the heart… but plot twist: you already had mine, from the very beginning. 💗";
-                }
-            }
-
-            // Start game + handle taps
-            if (lgHeart) {
-                lgHeart.addEventListener("click", () => {
-                    if (!lgStarted) {
-                        lgStartGameOnce();
-                    }
-                    if (!lgHeart.disabled && lgTimeLeft > 0) {
-                        lgClicks++;
-
-                        // Update love meter
-                        const percent = Math.min(100, (lgClicks / lgMaxClicksForFull) * 100);
-                        lgMeter.style.width = percent + "%";
-
-                        // Tiny tap animation
-                        lgHeart.style.transform = "scale(0.9)";
-                        setTimeout(() => {
-                            lgHeart.style.transform = "scale(1)";
-                        }, 120);
-                    }
-                });
-            }
+            
 
             // --- Mini Game 2: Perfect Timing ---
             const tBar = document.getElementById('timing-bar');
